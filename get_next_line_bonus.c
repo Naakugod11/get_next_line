@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgulec <dgulec@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 19:30:47 by dgulec            #+#    #+#             */
-/*   Updated: 2024/12/20 19:24:59 by dgulec           ###   ########.fr       */
+/*   Created: 2024/12/20 19:19:07 by dgulec            #+#    #+#             */
+/*   Updated: 2024/12/20 19:25:47 by dgulec           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
-	static char	left_c[BUFFER_SIZE + 1];
+	static char	left_c[MAX_FD][BUFFER_SIZE + 1];
 	char		*result;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		left_c[0] = '\0';
+		left_c[fd][0] = '\0';
 		return (NULL);
 	}
-	result = ft_strdup(left_c);
+	result = ft_strdup(left_c[fd]);
 	if (!result)
 	{
-		left_c[0] = '\0';
+		left_c[fd][0] = '\0';
 		return (NULL);
 	}
-	result = read_and_store(fd, &result, left_c);
+	result = read_and_store(fd, &result, left_c[fd]);
 	if (!result)
 	{
-		left_c[0] = '\0';
+		left_c[fd][0] = '\0';
 		return (NULL);
 	}
-	return (split_line(result, left_c));
+	return (split_line(result, left_c[fd]));
 }
 
 char	*read_and_store(int fd, char **result, char *left_c)

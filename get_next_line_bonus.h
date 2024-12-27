@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgulec <dgulec@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 22:31:12 by dgulec            #+#    #+#             */
-/*   Updated: 2024/12/20 19:24:05 by dgulec           ###   ########.fr       */
+/*   Created: 2024/12/20 19:25:54 by dgulec            #+#    #+#             */
+/*   Updated: 2024/12/20 19:25:56 by dgulec           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 12
